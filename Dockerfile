@@ -14,10 +14,15 @@ RUN npm install
 # copy the rest of the files and the build into tha app
 COPY . .
 
-EXPOSE 80
+# providing a deault port
+ARG DEFAULT_PORT=80
+
+ENV PORT $DEFAULT_PORT
+
+EXPOSE $PORT
 
 # declare volume to store the files in
 # VOLUME [ "/app/feedback" ]
 
-CMD [ "node","server.js" ]
+CMD [ "npm","start" ]
 
